@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Router  from "vue-router";
 import home from "./views/home"
-import about from "./views/about"
+import login from "./views/login"
+import user from "./views/user"
+import admin from "./views/admin"
 Vue.use(Router);
 export default new Router({
     mode:'history',
@@ -12,9 +14,21 @@ export default new Router({
             component:home
         },
         {
-            path:'/about',
-            name:'about',
-            component:about
+            path:'/login',
+            name:'login',
+            component:login
+        },
+        {
+            path:'/admin',
+            name:'admin',
+            component:admin,
+            children:[
+                {
+                    path:"/admin/post",
+                    name:"post",
+                    component:post
+                }
+            ]
         }
     ]
 })
